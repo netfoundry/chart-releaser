@@ -118,7 +118,6 @@ func (f *FakeGitHub) CreatePullRequest(owner string, repo string, message string
 
 // GetLatestChartRelease queries the GitHub API for the previous release of a chart
 func (f *FakeGitHub) GetLatestChartRelease(_ context.Context, prefix string) (*github.Release, error) {
-
 	f.Called(prefix)
 
 	result := &github.Release{
@@ -135,7 +134,6 @@ func (f *FakeGitHub) GetLatestChartRelease(_ context.Context, prefix string) (*g
 
 // GenerateReleaseNotes generates the release notes for a release
 func (f *FakeGitHub) GenerateReleaseNotes(_ context.Context, latestRelease *github.Release, nextRelease string) (string, error) {
-
 	f.Called(latestRelease, nextRelease)
 
 	notes := "# Noted."

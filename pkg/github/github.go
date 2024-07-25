@@ -105,7 +105,6 @@ func (c *Client) GetRelease(_ context.Context, tag string) (*Release, error) {
 
 // GetLatestChartRelease queries the GitHub API for the previous release of a chart
 func (c *Client) GetLatestChartRelease(_ context.Context, prefix string) (*Release, error) {
-
 	// Append hyphen to prefix unless already present
 	prefix = strings.TrimSuffix(prefix, "-") + "-"
 
