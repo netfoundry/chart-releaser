@@ -347,6 +347,7 @@ func (r *Releaser) CreateReleases() error {
 			return err
 		}
 
+		version := semver.MustParse(ch.Metadata.Version)
 		release := &github.Release{
 			Name:        releaseName,
 			Description: notes,
@@ -355,6 +356,7 @@ func (r *Releaser) CreateReleases() error {
 			},
 			Commit:     r.config.Commit,
 			MakeLatest: strconv.FormatBool(r.config.MakeReleaseLatest),
+			Prerelease: len(version.Pre) > 0,
 		}
 		provFile := fmt.Sprintf("%s.prov", p)
 		if _, err := os.Stat(provFile); err == nil {
